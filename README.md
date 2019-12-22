@@ -3,3 +3,13 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
  
 
 # This project is in alpha state
+
+### my wishlist
+
+Add all received mqtt states.
+
+Create configurable data sets.
+
+Add configurable name.
+
+Add to Home Assistent.
