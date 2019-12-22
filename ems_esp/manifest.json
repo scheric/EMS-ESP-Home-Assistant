@@ -1,0 +1,12 @@
+{
+    "domain": "ems_esp",
+    "name": "ems_esp receiver",
+    "documentation": "https://www.home-assistant.io/integrations/ems_esp",
+    "requirements": [],
+    "dependencies": [
+        "mqtt"
+    ],
+    "codeowners": [
+        "@scheric"
+    ]
+}
