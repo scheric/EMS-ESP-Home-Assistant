@@ -7,14 +7,15 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
 ### my wishlist
 
 - [ ] Add all received mqtt states.
+  - [ ] icons 
   - [ ] sensors
+  - [ ] switches
+  - [ ] scripts
+  - [ ] climate
   - [ ] binary sensors
   - [ ] optional kW calculation
-
 - [ ] Create configurable data sets.
-
 - [ ] Add configurable name.
-
 - [ ] Add to Home Assistant.
 
 
