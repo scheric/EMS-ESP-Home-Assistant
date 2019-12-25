@@ -7,7 +7,7 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
 ### my wishlist
 
 - [ ] Add all received mqtt states.
-  - [ ] icons 
+  - [x] icons 
   - [ ] sensors
   - [ ] switches
   - [ ] scripts
