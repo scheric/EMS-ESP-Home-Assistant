@@ -14,6 +14,7 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
   - [ ] climate
   - [ ] binary sensors
   - [ ] optional kW calculation
+- [ ] Add sending topics
 - [ ] Add configurable topic
 - [ ] Create configurable data sets.
 - [ ] Add configurable name.
