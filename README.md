@@ -2,7 +2,7 @@
 Custom component for receiving mqtt values from ems-esp. I made this for clearing up the configuration.yaml files. 
  
 
-# This project is in alpha state
+# This project is in beta state
 
 ### my wishlist
 
@@ -14,6 +14,7 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
   - [ ] climate
   - [ ] binary sensors
   - [ ] optional kW calculation
+- [ ] Add configurable topic
 - [ ] Create configurable data sets.
 - [ ] Add configurable name.
 - [ ] Add to Home Assistant.
