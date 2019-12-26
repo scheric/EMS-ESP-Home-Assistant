@@ -1,3 +1,4 @@
+home/ems-esp/boiler_data
 {
     "wWComfort": "Eco",
     "wWSelTemp": 60,
@@ -34,3 +35,36 @@
     "ServiceCode": "-H",
     "ServiceCodeNumber": 200
 }
+
+home/ems-esp/heartbeat
+{
+    "version": "1.9.3",
+    "IP": "192.168.178.28",
+    "rssid": 46,
+    "load": 7,
+    "uptime": 336374,
+    "freemem": 52,
+    "MQTTdisconnects": 0
+}
+
+home/ems-esp/shower_data
+{
+    "timer": "1",
+    "alert": "0"
+}
+
+home/ems-esp/tapwater_active 1/0
+
+home/ems-esp/heating_active 1/0
+
+home/ems-esp/thermostat_data
+
+home/ems-esp/mixing_data
+
+home/ems-esp/sm_data
+
+home/ems-esp/hp_data
+
+home/ems-esp/sensors
+
+home/ems-esp/start
