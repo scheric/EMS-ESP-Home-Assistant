@@ -13,7 +13,7 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
   - [ ] scripts
   - [ ] climate
   - [ ] binary sensors
-  - [ ] optional kW calculation
+  - [x] optional kW calculation
   
 - [ ] Add boiler/thermostat/solar/ect. topic toggler
 - [ ] Add sending topics
@@ -33,5 +33,6 @@ sensor:
   - platform: ems_esp
     name: EMS
     base_topic: home
+    boiler_power: 30
 ```
 4. reboot Home Assistant
