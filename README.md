@@ -15,9 +15,9 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
   - [ ] binary sensors
   - [ ] optional kW calculation
 - [ ] Add sending topics
-- [ ] Add configurable topic
+- [x] Add configurable topic
 - [ ] Create configurable data sets.
-- [ ] Add configurable name.
+- [x] Add configurable name.
 - [ ] Add to Home Assistant.
 
 
@@ -29,5 +29,7 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
 ```yaml
 sensor: 
   - platform: ems_esp
+    name: EMS
+    base_topic: home
 ```
 4. reboot Home Assistant
