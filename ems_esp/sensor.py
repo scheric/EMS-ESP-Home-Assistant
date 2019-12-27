@@ -3,20 +3,34 @@ from homeassistant.components import mqtt
 from homeassistant.core import callback
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import slugify
+import voluptuous as vol
+from homeassistant.components.sensor import PLATFORM_SCHEMA
+import homeassistant.helpers.config_validation as cv
+
+from homeassistant.const import (
+    ATTR_ATTRIBUTION, CONF_NAME, CONF_PASSWORD, CONF_USERNAME)
 
 import json
 
 from .constants import CONSTANTS
 
 DOMAIN = "ems_esp"
+CONF_BASE = "base_topic"
+DEFAULT_BASE = "home"
+DEFAULT_NAME = "EMS"
+
+PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
+    vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
+    vol.Optional(CONF_BASE, default=DEFAULT_BASE): cv.string,
+})
 
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Set up ems_esp sensors."""
-
+    
     sensors = []
     for sensor in CONSTANTS:
-        sensors.append(DSMRSensor(sensor))
+        sensors.append(DSMRSensor(sensor, config))
 
     async_add_entities(sensors)
 
@@ -24,18 +38,20 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 class DSMRSensor(Entity):
     """Representation of a ems-esp sensor that is updated via MQTT."""
 
-    def __init__(self, sensor):
+    def __init__(self, sensor, config):
         """Initialize the sensor."""
 
         self._definition = CONSTANTS[sensor] #import data from constents
+        self._base  = config[CONF_BASE]
+        self._Name = config[CONF_NAME] + " "
         
         self._name = self._definition.get("name")
         #self._entity_id = self._definition.get("entity")
         self._unit_of_measurement = self._definition.get("unit")        
         self._icon = self._definition.get("icon")        
         
-        self._topic = "home/ems-esp/boiler_data"
-        self._value = self._definition.get("value")
+        self._topic = self._base + "/ems-esp/boiler_data"
+        self._value = self._definition.get("value") 
         
         self._state = None
 
@@ -45,8 +61,6 @@ class DSMRSensor(Entity):
         @callback
         def message_received(message):
             """Handle new MQTT messages."""
-
-            #self._state = message.payload
             
             self._state = json.loads(message.payload)[self._value]
 
@@ -57,13 +71,7 @@ class DSMRSensor(Entity):
     @property
     def name(self):
         """Return the name of the sensor supplied in constructor."""
-        return self._name
-
- #   @property
- #   def entity_id(self):
- #       """Return the entity ID for this sensor."""
- #       #return f"sensor.{self._entity_id}"
- #       return self._entity_id
+        return self._Name + self._name
 
     @property
     def state(self):
