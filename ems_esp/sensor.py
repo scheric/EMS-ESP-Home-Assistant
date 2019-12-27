@@ -12,16 +12,20 @@ from homeassistant.const import (
 
 import json
 
-from .constants import CONSTANTS
-
 DOMAIN = "ems_esp"
+
+from .constants import CONSTANTS_SENSORS, CONSTANTS_BOILER_POWER
+
 CONF_BASE = "base_topic"
+CONF_POWER = "boiler_power"
+
 DEFAULT_BASE = "home"
-DEFAULT_NAME = "EMS"
+DEFAULT_NAME = "EMS_ESP"
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Optional(CONF_BASE, default=DEFAULT_BASE): cv.string,
+    vol.Optional(CONF_POWER, default=0): vol.Coerce(float),
 })
 
 
@@ -29,30 +33,33 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     """Set up ems_esp sensors."""
     
     sensors = []
-    for sensor in CONSTANTS:
-        sensors.append(DSMRSensor(sensor, config))
+    for sensor in CONSTANTS_SENSORS:
+        sensors.append(EMS_ESPSensor(sensor, config, CONSTANTS_SENSORS[sensor].get("name"), CONSTANTS_SENSORS[sensor].get("unit") , CONSTANTS_SENSORS[sensor].get("icon"), CONSTANTS_SENSORS[sensor].get("value")))
+        
+    for sensor in CONSTANTS_BOILER_POWER:
+        if config[CONF_POWER]:
+            sensors.append(EMS_ESPSensor(sensor, config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value")))
 
     async_add_entities(sensors)
 
 
-class DSMRSensor(Entity):
+class EMS_ESPSensor(Entity):
     """Representation of a ems-esp sensor that is updated via MQTT."""
 
-    def __init__(self, sensor, config):
+    def __init__(self, sensor, config, Name, Unit, Icon, Value):
         """Initialize the sensor."""
 
-        self._definition = CONSTANTS[sensor] #import data from constents
         self._base  = config[CONF_BASE]
         self._Name = config[CONF_NAME] + " "
-        
-        self._name = self._definition.get("name")
-        #self._entity_id = self._definition.get("entity")
-        self._unit_of_measurement = self._definition.get("unit")        
-        self._icon = self._definition.get("icon")        
+        self._boiler_power = config[CONF_POWER]
         
         self._topic = self._base + "/ems-esp/boiler_data"
-        self._value = self._definition.get("value") 
         
+        self._name = Name
+        self._unit_of_measurement = Unit      
+        self._icon = Icon      
+        self._value = Value
+         
         self._state = None
 
     async def async_added_to_hass(self):
@@ -61,7 +68,6 @@ class DSMRSensor(Entity):
         @callback
         def message_received(message):
             """Handle new MQTT messages."""
-            
             self._state = json.loads(message.payload)[self._value]
 
             self.async_schedule_update_ha_state()
@@ -72,10 +78,17 @@ class DSMRSensor(Entity):
     def name(self):
         """Return the name of the sensor supplied in constructor."""
         return self._Name + self._name
-
+        
     @property
     def state(self):
         """Return the current state of the entity."""
+        
+        if self._name == "current boiler power":
+            try:
+                self._state = round(((self._boiler_power/100) * self._state),1)
+            except TypeError:
+                pass
+        
         return self._state
 
     @property
