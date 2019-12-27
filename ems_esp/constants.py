@@ -1,6 +1,15 @@
 """constants for ems esp """
 
-CONSTANTS = {
+CONSTANTS_BOILER_POWER = {
+    "boiler power sensor": {
+        "value": "curBurnPow",
+        "name": "current burner power",
+        "icon": "mdi:square-inc-cash",
+        "unit": "kW",
+    }
+}
+
+CONSTANTS_SENSORS = {
     "return temp sensor": {
         "value": "retTemp",
         "name": "Return Temperature",
@@ -51,7 +60,7 @@ CONSTANTS = {
     },
     "burner power sensor": {
         "value": "curBurnPow",
-        "name": "Burner current power",
+        "name": "Burner current modulation",
         "icon": "mdi:fire",
         "unit": "%",
     },
