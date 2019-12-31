@@ -48,23 +48,25 @@ home/ems-esp/heartbeat
 }
 
 home/ems-esp/shower_data
-{
-    "timer": "1",
-    "alert": "0"
-}
+{"timer":"0","alert":"0","duration":"4 minutes 32 seconds"}
 
 home/ems-esp/tapwater_active 1/0
 
 home/ems-esp/heating_active 1/0
 
 home/ems-esp/thermostat_data
+{ "hc1":{"seltemp":15,"currtemp":20.6,"mode":"auto"}, "hc2":{"seltemp":8,"currtemp":18.2,"mode":"off"} }
 
 home/ems-esp/mixing_data
+{"hc1":{"flowTemp":55,"pumpMod":"1","valveStatus":"1"}}
 
 home/ems-esp/sm_data
+collectortemp bottomtemp pumpmodulation pump energylasthour energytoday energytotal pumpWorkMin
 
 home/ems-esp/hp_data
+{"pumpmodulation":"1", "pumpspeed": 20}
 
 home/ems-esp/sensors
+{"temp_1":"20.18","temp_2":"40.81"}
 
-home/ems-esp/start
+home/ems-esp/start online/ofline
