@@ -44,3 +44,8 @@ sensor:
     boiler_power: 30
 ```
 4. reboot Home Assistant
+
+
+## Notes: 
+The thermostat sensors are not fully tested. 
+
