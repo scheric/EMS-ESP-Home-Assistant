@@ -71,27 +71,27 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     #add shower sensors
     if config[CONF_SHOWER_DATA]:
         for sensor in CONSTANTS_BOILER_POWER:
-            sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
+            #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     #add solar sensors
     if config[CONF_SOLAR_DATA]:
         for sensor in CONSTANTS_BOILER_POWER:
-            sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
+            #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     #add heatpump sensors
     if config[CONF_HEATPUMP_DATA]:
         for sensor in CONSTANTS_BOILER_POWER:
-            sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
+            #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     #add heartbeat sensors
     if config[CONF_HEARTBEAT]:
         for sensor in CONSTANTS_BOILER_POWER:
-            sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
+            #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     #add mixer sensors
     if config[CONF_MIXING_DATA]:
         for sensor in CONSTANTS_BOILER_POWER:
-            sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
+            #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     
     async_add_entities(sensors)
