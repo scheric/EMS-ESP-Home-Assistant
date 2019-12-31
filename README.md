@@ -29,10 +29,18 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
 2. Copy the folder `ems-esp` into the `custom_components` folder. 
 3. Add the yaml code below to your `configuration.yaml`
 ```yaml
-sensor: 
+sensor:
   - platform: ems_esp
     name: EMS
     base_topic: home
+    thermostat: false
+    boiler: false
+    sensor: 2
+    shower: false
+    solar: false
+    heatpump: false
+    heartbeat: false
+    mixer: false
     boiler_power: 30
 ```
 4. reboot Home Assistant
