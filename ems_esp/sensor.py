@@ -32,7 +32,7 @@ CONF_POWER = "boiler_power"
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default="EMS_ESP"): cv.string,
     vol.Optional(CONF_BASE, default="home"): cv.string,
-    vol.Optional(CONF_THERMOSTAT, default=True): cv.boolean,
+    vol.Optional(CONF_THERMOSTAT, default=False): cv.boolean,
     vol.Optional(CONF_BOILER, default=True): cv.boolean,
     vol.Optional(CONF_SENSORS, default=0): cv.positive_int,
     vol.Optional(CONF_SHOWER_DATA, default=False): cv.boolean,
@@ -71,27 +71,37 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     #add shower sensors
     if config[CONF_SHOWER_DATA]:
         for sensor in CONSTANTS_BOILER_POWER:
+            pass
             #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     #add solar sensors
     if config[CONF_SOLAR_DATA]:
         for sensor in CONSTANTS_BOILER_POWER:
+            pass
             #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     #add heatpump sensors
     if config[CONF_HEATPUMP_DATA]:
         for sensor in CONSTANTS_BOILER_POWER:
+            pass
             #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     #add heartbeat sensors
     if config[CONF_HEARTBEAT]:
         for sensor in CONSTANTS_BOILER_POWER:
+            pass
             #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     #add mixer sensors
     if config[CONF_MIXING_DATA]:
         for sensor in CONSTANTS_BOILER_POWER:
+            pass
             #sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
+
+    #add boiler power sensor DONE
+    if config[CONF_POWER]:
+        for sensor in CONSTANTS_BOILER_POWER:
+            sensors.append(EMS_ESPSensor(config, CONSTANTS_BOILER_POWER[sensor].get("name"), CONSTANTS_BOILER_POWER[sensor].get("unit") , CONSTANTS_BOILER_POWER[sensor].get("icon"), CONSTANTS_BOILER_POWER[sensor].get("value"), CONSTANTS_BOILER_POWER[sensor].get("topic")))
 
     
     async_add_entities(sensors)
@@ -115,7 +125,8 @@ class EMS_ESPSensor(Entity):
         self._value = Value
         self._topic = self._base + Topic 
          
-        self._state = None
+        self._in = None
+        self._out = None
 
     async def async_added_to_hass(self):
         """Subscribe to MQTT events."""
@@ -123,7 +134,7 @@ class EMS_ESPSensor(Entity):
         @callback
         def message_received(message):
             """Handle new MQTT messages."""
-            self._state = json.loads(message.payload)[self._value]
+            self._in = json.loads(message.payload)[self._value]
 
             self.async_schedule_update_ha_state()
 
@@ -138,13 +149,16 @@ class EMS_ESPSensor(Entity):
     def state(self):
         """Return the current state of the entity."""
         
-        if self._name == "current boiler power":
+        self._out = self._in
+        
+        if self._name == "current burner power":
             try:
-                self._state = round(((self._boiler_power/100) * self._state),1)
+                self._out = round(((self._boiler_power/100) * self._in),1)
             except TypeError:
                 pass
         
-        return self._state
+        
+        return self._out
 
     @property
     def unit_of_measurement(self):
