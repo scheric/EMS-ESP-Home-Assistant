@@ -15,7 +15,16 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
   - [ ] binary sensors
   - [x] optional kW calculation
   
-- [ ] Add boiler/thermostat/solar/ect. topic toggler
+- [x] Add boiler/thermostat/solar/ect. topic toggler in .yaml
+- [ ] thermostat
+- [x] boiler
+- [ ] sensor
+- [ ] shower
+- [ ] solar
+- [ ] heatpump
+- [ ] heartbeat
+- [ ] mixer
+- [x] boiler power calculator
 - [ ] Add sending topics
 - [x] Add configurable topic
 - [ ] Create configurable data sets.
