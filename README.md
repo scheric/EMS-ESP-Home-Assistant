@@ -1,5 +1,5 @@
 # EMS ESP Home Assistant
-Custom component for receiving mqtt values from ems-esp. I made this for clearing up the configuration.yaml files. 
+Custom component for receiving MQTT values from ems-esp. I made this for clearing up the configuration.yaml files. 
  
 
 # This project is in beta state
