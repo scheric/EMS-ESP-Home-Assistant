@@ -34,7 +34,7 @@ Custom component for receiving mqtt values from ems-esp. I made this for clearin
 
 ### How to use this
 
-1. Create an `custom_components` folder located inside the Home Assistant `config` folder.
+1. Create a `custom_components` folder located inside the Home Assistant `config` folder.
 2. Copy the folder `ems-esp` into the `custom_components` folder. 
 3. Add the yaml code below to your `configuration.yaml`
 ```yaml
