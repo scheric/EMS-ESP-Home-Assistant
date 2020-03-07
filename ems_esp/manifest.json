@@ -1,7 +1,7 @@
 {
-    "domain": "ems_esp",
-    "name": "ems_esp receiver",
-    "documentation": "https://www.home-assistant.io/integrations/ems_esp",
+    "domain": "xxxx",
+    "name": "xxxx",
+    "documentation": "https://www.home-assistant.io/integrations/xxxx",
     "requirements": [],
     "dependencies": [
         "mqtt"
