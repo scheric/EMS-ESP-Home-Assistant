@@ -3,48 +3,6 @@ home/ems-esp/boiler_data
     "wWComfort": "Eco",
     "wWSelTemp": 60,
     "wWDesiredTemp": 70,
-    "selFlowTemp": 39,
-    "selBurnPow": 67,
-    "curBurnPow": 23,
-    "pumpMod": 50,
-    "wWCircPump": 0,
-    "wWCurTmp": 34.7,
-    "wWCurFlow": 0,
-    "curFlowTemp": 41.1,
-    "retTemp": 34.3,
-    "switchTemp": 0,
-    "sysPress": 1.3,
-    "boilTemp": 41.6,
-    "wWActivated": "on",
-    "burnGas": "on",
-    "flameCurr": 26.2,
-    "heatPmp": "on",
-    "fanWork": "on",
-    "ignWork": "off",
-    "wWCirc": "off",
-    "heating_temp": 60,
-    "pump_mod_max": 90,
-    "pump_mod_min": 50,
-    "wWHeat": "off",
-    "wWStarts": 6630,
-    "wWWorkM": 10059,
-    "UBAuptime": 583905,
-    "burnStarts": 11899,
-    "burnWorkMin": 142146,
-    "heatWorkMin": 132087,
-    "ServiceCode": "-H",
-    "ServiceCodeNumber": 200
-}
-
-home/ems-esp/heartbeat
-{
-    "version": "1.9.3",
-    "IP": "192.168.178.28",
-    "rssid": 46,
-    "load": 7,
-    "uptime": 336374,
-    "freemem": 52,
-    "MQTTdisconnects": 0
 }
 
 home/ems-esp/shower_data
@@ -52,21 +10,6 @@ home/ems-esp/shower_data
 
 home/ems-esp/tapwater_active 1/0
 
-home/ems-esp/heating_active 1/0
-
 home/ems-esp/thermostat_data
 { "hc1":{"seltemp":15,"currtemp":20.6,"mode":"auto"}, "hc2":{"seltemp":8,"currtemp":18.2,"mode":"off"} }
 
-home/ems-esp/mixing_data
-{"hc1":{"flowTemp":55,"pumpMod":"1","valveStatus":"1"}}
-
-home/ems-esp/sm_data
-collectortemp bottomtemp pumpmodulation pump energylasthour energytoday energytotal pumpWorkMin
-
-home/ems-esp/hp_data
-{"pumpmodulation":"1", "pumpspeed": 20}
-
-home/ems-esp/sensors
-{"temp_1":"20.18","temp_2":"40.81"}
-
-home/ems-esp/start online/ofline
