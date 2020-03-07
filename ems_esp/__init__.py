@@ -1,1 +1,1 @@
-"""The ems-esp component."""
+"""The [xxxxx] component."""
