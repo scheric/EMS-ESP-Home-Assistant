@@ -1,4 +1,4 @@
-# EMS ESP Home Assistant
+# clean mqtt to Home Assistant
 Custom component for receiving MQTT values from ems-esp. I made this for clearing up the configuration.yaml files. 
  
 
