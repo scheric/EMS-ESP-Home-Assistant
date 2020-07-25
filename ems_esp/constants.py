@@ -19,7 +19,7 @@ CONSTANTS_BOILER_POWER = {
         "value": "curBurnPow",
         "topic": MQTT_TOPICS[0],
         "name": "current burner power",
-        "icon": "mdi:square-inc-cash",
+        "icon": "mdi:water-boiler",
         "unit": "kW",
     }
 }
