@@ -1,3 +1,5 @@
+# This project is out of date it may work it may not.
+
 # EMS ESP Home Assistant
 Custom component for receiving MQTT values from ems-esp. I made this for clearing up the configuration.yaml files. 
  
